@@ -68,15 +68,6 @@ $input-ios-input-clear-padding-end:       ($input-ios-input-clear-icon-width + $
 /// @prop - Placeholder Text color of the input
 $input-ios-placeholder-color:              $placeholder-text-ios-color !default;
 
-/// @prop - Show the focus highlight when the input has focus
-$input-ios-show-focus-highlight:          false !default;
-
-/// @prop - Show the valid highlight when it is valid and has a value
-$input-ios-show-valid-highlight:          $input-ios-show-focus-highlight !default;
-
-/// @prop - Show the invalid highlight when it is invalid and has value
-$input-ios-show-invalid-highlight:        $input-ios-show-focus-highlight !default;
-
 /// @prop - Color of the input highlight
 $input-ios-highlight-color:               ion-color($colors-ios, primary, base, ios) !default;
 

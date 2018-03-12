@@ -47,12 +47,3 @@
 .list-md[inset] ion-list-header {
   background-color: $item-md-background-color;
 }
-
-
-// Material Design No Lines List
-// --------------------------------------------------
-
-.list-md[no-lines] .item-md,
-.list-md[no-lines] .item-md .item-inner {
-  border-width: 0;
-}

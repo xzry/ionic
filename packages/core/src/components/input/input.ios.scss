@@ -28,62 +28,48 @@
 // iOS Highlighted Input
 // --------------------------------------------------
 
-// TODO this is angular specific scss
-
-// Input highlight mixin for focus, valid, and invalid states
-@mixin ios-input-highlight($highlight-color) {
-  border-bottom-color: $highlight-color;
-}
-
 // Show the focus highlight when the input has focus
-@if ($input-ios-show-focus-highlight) {
-  // In order to get a 2px border we need to add an inset
-  // box-shadow 1px (this is to avoid the div resizing)
-
-  .item-ios.item-input.item-input-has-focus .item-inner {
-    @include ios-input-highlight($input-ios-highlight-color);
-  }
-
-  // The last item in a list has a border on the item, not the
-  // inner item, so add it to the item itself
-  .list-ios .item-input.item-input-has-focus:last-child {
-    @include ios-input-highlight($input-ios-highlight-color);
-
-    .item-inner {
-      box-shadow: none;
-    }
-  }
+// In order to get a 2px border we need to add an inset
+// box-shadow 1px (this is to avoid the div resizing)
+.item-ios.item-input-has-focus .item-inner {
+  border-bottom: 2px solid $input-ios-highlight-color;
 }
 
-// Show the valid highlight when it has the .ng-valid class and a value
-@if ($input-ios-show-valid-highlight) {
-  .item-ios.item-input.ng-valid.item-input-has-value:not(.item-input-has-focus) .item-inner {
-    @include ios-input-highlight($input-ios-highlight-color-valid);
-  }
+// The last item in a list has a border on the item, not the
+// inner item, so add it to the item itself
+// ion-item:last-child .item-ios .item-input-has-focus {
+//   border-bottom-color: $input-ios-highlight-color;
 
-  .list-ios .item-input.ng-valid.item-input-has-value:not(.item-input-has-focus):last-child {
-    @include ios-input-highlight($input-ios-highlight-color-valid);
+//   .item-inner {
+//     box-shadow: none;
+//   }
+// }
 
-    .item-inner {
-      box-shadow: none;
-    }
-  }
-}
+// // Show the valid highlight when it has the .ion-valid class and a value
+// .item-ios.ion-valid.item-input-has-value .item-inner {
+//   border-bottom-color: $input-ios-highlight-color-valid;
+// }
 
-// Show the invalid highlight when it has the invalid class and has been touched
-@if ($input-ios-show-invalid-highlight) {
-  .item-ios.item-input.ng-invalid.ng-touched:not(.item-input-has-focus) .item-inner {
-    @include ios-input-highlight($input-ios-highlight-color-invalid);
-  }
+// ion-item:last-child .item-ios.ion-valid.item-input-has-value {
+//   border-bottom-color: $input-ios-highlight-color-valid;
 
-  .list-ios .item-input.ng-invalid.ng-touched:not(.item-input-has-focus):last-child {
-    @include ios-input-highlight($input-ios-highlight-color-invalid);
+//   .item-inner {
+//     box-shadow: none;
+//   }
+// }
 
-    .item-inner {
-      box-shadow: none;
-    }
-  }
-}
+// // Show the invalid highlight when it has the invalid class and has been touched
+// .item-ios.item-input.ion-invalid.ion-touched .item-inner {
+//   border-bottom-color: $input-ios-highlight-color-invalid;
+// }
+
+// ion-item:last-child .item-ios.item-input.ion-invalid.ion-touched {
+//   border-bottom-color: $input-ios-highlight-color-invalid;
+
+//   .item-inner {
+//     box-shadow: none;
+//   }
+// }
 
 // iOS Input After Label
 // --------------------------------------------------

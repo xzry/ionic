@@ -76,3 +76,11 @@ ion-item-options {
     visibility: visible;
   }
 }
+
+
+// No Lines Item Options
+// --------------------------------------------------
+
+ion-item-sliding[no-lines] ion-item-options {
+  border-width: 0;
+}

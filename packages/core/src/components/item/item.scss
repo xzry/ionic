@@ -60,9 +60,13 @@ ion-item {
   text-overflow: ellipsis;
 }
 
-.item[no-lines],
-.item.item[no-lines] .item-inner {
-  border: 0;
+
+// Item Lines
+// --------------------------------------------------
+
+ion-item[no-lines] .item,
+ion-item[no-lines] .item-inner {
+  border-width: 0;
 }
 
 ion-item-group {

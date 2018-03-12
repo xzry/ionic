@@ -24,10 +24,6 @@
   background-color: $item-md-background-color-active;
 }
 
-.item-md[no-lines] {
-  border-width: 0;
-}
-
 .item-md h1 {
   @include margin(0, 0, 2px);
 
@@ -92,14 +88,6 @@ ion-reorder-group > ion-gesture {
   > ion-item-sliding:last-child .item-md .item-inner {
     border-bottom: 0;
   }
-}
-
-// If the item has the no-lines attribute remove the bottom border from:
-// the item itself (for last-child items)
-// the item-inner class (if it is not last)
-ion-item[no-lines],
-ion-item[no-lines] .item-inner {
-  border-width: 0;
 }
 
 
