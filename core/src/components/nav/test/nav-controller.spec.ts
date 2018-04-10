@@ -1,4 +1,4 @@
-import { mockDocument, mockElement } from '@stencil/core/testing';
+import { TestWindow } from '@stencil/core/testing';
 import { Nav } from '../nav';
 import { ViewController } from '../view-controller';
 import { AnimationControllerImpl } from '../../animation-controller/animation-controller';
@@ -1062,11 +1062,12 @@ const MockView2 = 'mock-view2';
 const MockView3 = 'mock-view3';
 const MockView4 = 'mock-view4';
 const MockView5 = 'mock-view5';
-const dom = mockDocument();
+const window = new TestWindow();
+const document = window.document;
 
 
 mockLifecycle(function(name: string, params: any) {
-  const event = dom.createEvent('CustomEvent');
+  const event = document.createEvent('CustomEvent');
   event.initCustomEvent(name, false, false, params.detail);
   return event;
 });
@@ -1077,7 +1078,7 @@ function mockView(component ?: any, data ?: any) {
   }
 
   const view = new ViewController(component, data);
-  view.element = mockElement(component) as HTMLElement;
+  view.element = document.createElement(component);
   return view;
 }
 
@@ -1090,7 +1091,7 @@ function mockViews(nav: Nav, views: ViewController[]) {
 
 function mockNavController(): Nav {
   const nav = new Nav() as any;
-  nav.el = mockElement('ion-nav') as HTMLElement;
+  nav.el = document.createElement('ion-nav');
   nav.ionNavDidChange = {emit: function() { return; } };
   nav.ionNavWillChange = {emit: function() { return; } };
 
@@ -1100,7 +1101,7 @@ function mockNavController(): Nav {
     if (!enteringView.element) {
       console.log(enteringView.component);
       enteringView.element = (typeof enteringView.component === 'string')
-        ? mockElement(enteringView.component) as HTMLElement
+        ? document.createElement(enteringView.component)
         : enteringView.element = enteringView.component as HTMLElement;
     }
     enteringView.state = ViewState.Attached;

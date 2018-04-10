@@ -3,10 +3,9 @@ import { routerIDsToChain, routerPathToChain } from '../utils/matching';
 import { mockRouteElement } from './parser.spec';
 import { chainToPath, generatePath, parsePath } from '../utils/path';
 import { flattenRouterTree, readRoutes } from '../utils/parser';
-import { mockElement } from '@stencil/core/dist/testing';
+import { TestWindow } from '@stencil/core/dist/testing';
 
 describe('ionic-conference-app', () => {
-
   it('should match conference-app routing', () => {
     const root = conferenceAppRouting();
     const tree = readRoutes(root);
@@ -65,7 +64,10 @@ function conferenceAppRouting() {
   p1.appendChild(p7);
 
   const p8 = mockRouteElement('/tutorial', 'page-tutorial');
-  const container = mockElement('div');
+
+  const window = new TestWindow();
+  const container = window.document.createElement('div');
+
   container.appendChild(p1);
   container.appendChild(p8);
   return container;

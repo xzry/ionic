@@ -1,10 +1,12 @@
-import { mockElement } from '@stencil/core/testing';
+import { TestWindow } from '@stencil/core/testing';
 import { flattenRouterTree, readRedirects, readRoutes } from '../utils/parser';
 import { RouteRedirect, RouteTree } from '../utils/interfaces';
 
 describe('readRoutes', () => {
+
   it('should read URL', () => {
-    const root = mockElement('div');
+    const document = new TestWindow().document;
+    const root = document.createElement('div');
     const r1 = mockRouteElement('/', 'MAIN-PAGE');
     const r2 = mockRouteElement('/one-page', 'one-page');
     const r3 = mockRouteElement('secondpage', 'second-page');
@@ -35,7 +37,8 @@ describe('readRoutes', () => {
 
 describe('readRedirects', () => {
   it('should read redirects', () => {
-    const root = mockElement('div');
+    const document = new TestWindow().document;
+    const root = document.createElement('div');
     const r1 = mockRedirectElement('/', undefined);
     const r2 = mockRedirectElement(undefined, '/workout');
     const r3 = mockRedirectElement('*', null);
@@ -83,14 +86,16 @@ describe('flattenRouterTree', () => {
 });
 
 export function mockRouteElement(path: string, component: string) {
-  const el = mockElement('ion-route');
+  const document = new TestWindow().document;
+  const el = document.createElement('ion-route');
   el.setAttribute('url', path);
   (el as any).component = component;
   return el;
 }
 
 export function mockRedirectElement(from: string|undefined, to: string|undefined) {
-  const el = mockElement('ion-route-redirect');
+  const document = new TestWindow().document;
+  const el = document.createElement('ion-route-redirect');
   if (from != null) {
     el.setAttribute('from', from);
   }
